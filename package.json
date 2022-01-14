@@ -1,0 +1,23 @@
+{
+  "author": "Phil Bredeson (https://github.com/pBread)",
+  "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.15.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "@twilio-labs/serverless-runtime-types": "^2.1.1",
+    "@types/twilio": "^3.19.3",
+    "twilio-run": "^3.4.0",
+    "typescript": "^4.4.2"
+  },
+  "name": "phone-manager",
+  "scripts": {
+    "build": "yarn babel src --delete-dir-on-start --extensions \".ts\" --out-dir=dist",
+    "dev": "yarn build; yarn twilio-run --functions-folder=dist --port=3000"
+  },
+  "version": "1.0.0"
+}
