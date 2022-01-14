@@ -1,7 +1,7 @@
 import type { ServerlessFunctionSignature } from "@twilio-labs/serverless-runtime-types/types";
 import { Twilio } from "twilio";
 
-const { AUTH_TOKEN } = process.env;
+const { AUTH_TOKEN, ACCOUNT_SID } = process.env;
 
 export const handler: ServerlessFunctionSignature = async (
   ctx,
