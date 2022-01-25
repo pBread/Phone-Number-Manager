@@ -9,6 +9,11 @@ interface Event {
   employeeId: string;
 }
 
+/**
+ * This purchases a new phone number for a new user. If you want to assign a user an
+ * existing phone number, use the src/assign-user-to-number.ts
+ */
+
 export const handler: ServerlessFunctionSignature = async (
   ctx,
   { areaCode = 206, employeeId }: Event,
@@ -30,6 +35,12 @@ export const handler: ServerlessFunctionSignature = async (
     return callback(error);
   }
 };
+
+/**
+ * Query all Messaging Services
+ * Sort by created date (or any unchanging property) so users are accumulated in the oldest Messaging Services
+ * Loop through each Messaging Service & return the first Messaging Service with capacity
+ */
 
 async function getMsgSvcSid() {
   const msgSvcSids = await client.messaging.services
@@ -57,6 +68,11 @@ async function getMsgSvcSid() {
 
   return msgSvc;
 }
+
+/**
+ * Purchases a phone number for an employee
+ * The employeeId is stored as the friendly name of the phone number. This is will make it easier to deprovision that user.
+ */
 
 async function buyPhoneNumber(employeeId: string, areaCode: number) {
   const availablePhoneNumber = await client
